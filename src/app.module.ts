@@ -9,7 +9,7 @@ import { Request } from './form-member/entity/request.entity';
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
-      port: 8080,
+      port: 5432,
       username: 'postgres',
       password: 'qwerty',
       database: 'locksmithmember',
