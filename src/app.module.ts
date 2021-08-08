@@ -10,9 +10,9 @@ import { Request } from './form-member/entity/request.entity';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'postgres',
+      username: 'mathew',
       password: 'qwerty',
-      database: 'locksmithmember',
+      database: 'evening',
       entities: [
        Locksmith,
        Request
