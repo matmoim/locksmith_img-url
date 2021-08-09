@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { HttpModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Locksmith } from './entity/locksmith.entity';
 import { FormMemberController } from './form-member.controller';
@@ -6,7 +6,10 @@ import { FormMemberService } from './form-member.service';
 import { Request } from './entity/request.entity';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Locksmith, Request])],
+    imports: [
+        TypeOrmModule.forFeature([Locksmith, Request]),
+        HttpModule,
+    ],
     providers: [FormMemberService],
     controllers: [FormMemberController]
 })

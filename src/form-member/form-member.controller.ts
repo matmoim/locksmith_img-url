@@ -1,8 +1,9 @@
-import { Body, Controller, Delete, Get, Inject, Injectable, Param, Post, Put, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Inject, Injectable, Param, Post, Put, Query, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { AnyFilesInterceptor, FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { CreateLocksmithDto } from './dto/create-locksmith.dto';
 import { CreateRequestDto } from './dto/create-request.dto';
 import { UpdateLocksmithDto } from './dto/update-locksmith.dto';
+import UploaPhotoByUrlDto from './dto/upload-photo-by-url';
 import { Locksmith } from './entity/locksmith.entity';
 import { Request } from './entity/request.entity';
 import { FormMemberService } from './form-member.service';
@@ -11,7 +12,7 @@ import { FormMemberService } from './form-member.service';
 export class FormMemberController {
     constructor(
         private readonly formMemberService: FormMemberService
-    ){}
+    ) { }
 
     @Get('get-all')
     public async getAll(): Promise<Locksmith[]> {
@@ -26,20 +27,28 @@ export class FormMemberController {
     @Get('search/:key_word')
     public async search(
         @Param('key_word') key_word: string
-    ): Promise<Locksmith[]> {        
+    ): Promise<Locksmith[]> {
         return this.formMemberService.search(key_word);
+    }
+
+    @Post('add-photo/by-url')
+    public addPhotoByUrl(
+        @Query() dataForPhoto: UploaPhotoByUrlDto,
+    ) {
+        const { locksmith_id, photoUrl } = dataForPhoto;
+        
+        return this.formMemberService.uploadPhotoByUrl(photoUrl, locksmith_id);
     }
 
     @Post('add-photo/:locksmith_id/:entity/:typeFile')
     @UseInterceptors(FileInterceptor('file'))
     public async addPhotoToLocksmith(
-        @UploadedFile() file: Express.Multer.File, 
+        @UploadedFile() file: Express.Multer.File,
         @Param('locksmith_id') locksmith_id: string,
         @Param('entity') entity: string,
         @Param('typeFile') typeFile: string
 
     ): Promise<String> {
-        console.log(file, locksmith_id);
         return this.formMemberService.uploadFile(file, locksmith_id, entity, typeFile);
     }
 
@@ -56,7 +65,7 @@ export class FormMemberController {
     ): Promise<Request> {
         return this.formMemberService.createRequest(createLocksmithDto);
     }
-    
+
     @Put('update')
     public async updateLocksmith(
         @Body() updateLocksmithDto: UpdateLocksmithDto
