@@ -141,7 +141,17 @@ export class FormMemberService {
 
     async uploadPhotoByUrl(url: string, keyId: string) {
         const { fileName, filePath } = await this.makeFileName(keyId, url, true);
+
+        const onlyPath = filePath.slice(0, filePath.indexOf(fileName));
+        console.log(onlyPath);
+        console.log(filePath);
+
+        if (!fse.existsSync(onlyPath)) {
+            fse.mkdirSync(filePath, { recursive: true });
+        }
+
         const writer = fse.createWriteStream(filePath);
+
 
         return new Promise((resolve, reject) => {
             this.httpService
