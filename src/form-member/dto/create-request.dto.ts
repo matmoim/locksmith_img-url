@@ -1,6 +1,6 @@
 export class CreateRequestDto {
     business_name!: string;
-    business_adress!: string;
+    business_adress!: string[];
     business_phone!: string;
     business_mail!: string;
     link_to_site!: string;

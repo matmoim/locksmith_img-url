@@ -8,8 +8,8 @@ export class Request {
   @Column()
   business_name!: string;
 
-  @Column()
-  business_adress!: string;
+  @Column('character varying', { default: '{}', array: true })
+  business_adress!: string[];
 
   @Column()
   business_phone!: string;
