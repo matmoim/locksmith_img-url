@@ -2,10 +2,14 @@ import { Body, Controller, Delete, Get, Inject, Injectable, Param, Post, Put, Qu
 import { AnyFilesInterceptor, FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { CreateLocksmithDto } from './dto/create-locksmith.dto';
 import { CreateRequestDto } from './dto/create-request.dto';
+import { SelectWorkingDays } from './dto/select-working.dto';
+import { SetTime } from './dto/set-time.dto';
 import { UpdateLocksmithDto } from './dto/update-locksmith.dto';
+import { UpdateSetTimeDto } from './dto/UpdtSetTimeDto.dto';
 import UploaPhotoByUrlDto from './dto/upload-photo-by-url';
 import { Locksmith } from './entity/locksmith.entity';
 import { Request } from './entity/request.entity';
+import { Time } from './entity/time.entity';
 import { FormMemberService } from './form-member.service';
 
 @Controller('form-member')
@@ -65,6 +69,13 @@ export class FormMemberController {
     ): Promise<Request> {
         return this.formMemberService.createRequest(createLocksmithDto);
     }
+
+    // @Post('choisetime')
+    // public async choiseTime(
+    //     @Body() settime: SetTime
+    // ): Promise<Time>{
+    // return this.formMemberService.update(UpdateSetTimeDto)
+    // }
 
     @Put('update')
     public async updateLocksmith(

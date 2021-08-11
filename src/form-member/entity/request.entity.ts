@@ -46,26 +46,26 @@ export class Request {
 
   // Work days
 
-  @Column({ default: false })
-  monday!: boolean;
+  // @Column({ default: false })
+  // monday!: boolean;
 
-  @Column({ default: false })
-  tuesday!: boolean;
+  // @Column({ default: false })
+  // tuesday!: boolean;
 
-  @Column({ default: false })
-  wednesday!: boolean;
+  // @Column({ default: false })
+  // wednesday!: boolean;
 
-  @Column({ default: false })
-  thursday!: boolean;
+  // @Column({ default: false })
+  // thursday!: boolean;
 
-  @Column({ default: false })
-  friday!: boolean;
+  // @Column({ default: false })
+  // friday!: boolean;
 
-  @Column({ default: false })
-  saturday!: boolean;
+  // @Column({ default: false })
+  // saturday!: boolean;
 
-  @Column({ default: false })
-  sunday!: boolean;
+  // @Column({ default: false })
+  // sunday!: boolean;
 
   // Work days
 }

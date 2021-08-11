@@ -10,6 +10,10 @@ import { Request } from './entity/request.entity';
 import { UpdateLocksmithDto } from './dto/update-locksmith.dto';
 import { UpdateRequestDto } from './dto/update-request.dto';
 import { validateMIMEType } from "validate-image-type";
+import { Time } from './entity/time.entity';
+import {  UpdateSetTimeDto } from './dto/UpdtSetTimeDto.dto';
+import { SelectWorkingDays } from './dto/select-working.dto';
+import { UpdtSelktWorkDayDto } from './dto/UpdtSelWkD.dto';
 
 
 const ALLOWED_TYPES = [
@@ -58,6 +62,21 @@ export class FormMemberService {
             .where("id = :id", { id: updateLocksmithDto.id })
             .execute();
     }
+
+    public async thedays(updateSelectWorkinDto: UpdtSelktWorkDayDto): Promise<void> {
+        await getConnection()
+            .createQueryBuilder()
+            .update(SelectWorkingDays)
+    }
+
+    
+
+    public async choiseTime(updateSelectWorkinDto: UpdateSetTimeDto): Promise<void> {
+        await getConnection()
+            .createQueryBuilder()
+            .update(Time)
+    }
+
 
     public async createRequest(createRequestDto: CreateRequestDto): Promise<Request> {
         return this.requestRepository.save(createRequestDto);

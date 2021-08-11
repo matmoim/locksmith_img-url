@@ -10,11 +10,11 @@ export class UpdateLocksmithDto {
     open_at!: Date;
     close_at!: Date;
     photo!: string;
-    monday!: boolean;
-    tuesday!: boolean;
-    wednesday!: boolean;
-    thursday!: boolean;
-    friday!: boolean;
-    saturday!: boolean;
-    sunday!: boolean;
+    // monday!: boolean;
+    // tuesday!: boolean;
+    // wednesday!: boolean;
+    // thursday!: boolean;
+    // friday!: boolean;
+    // saturday!: boolean;
+    // sunday!: boolean;
 }

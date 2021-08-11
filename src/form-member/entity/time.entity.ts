@@ -1,7 +1,6 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
-import { Request } from "./request.entity";
-import { Locksmith } from "./locksmith.entity";
-import { request } from "express";
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn } from "typeorm";
+import { WorkingDays } from "./workingdays.entity";
+
 @Entity()
 export class Time {
   @PrimaryColumn()
@@ -13,9 +12,8 @@ export class Time {
   @Column("time")
   to!: Date
 
-  @ManyToOne(() => Request , request => request.)
-  
-
-  @ManyToOne(() => Locksmith)
+  @OneToOne(() => WorkingDays, workingdays => workingdays.time)
+  @JoinColumn()
+  workingdays!: WorkingDays;
 }
 
