@@ -4,10 +4,14 @@ import { Locksmith } from './entity/locksmith.entity';
 import { FormMemberController } from './form-member.controller';
 import { FormMemberService } from './form-member.service';
 import { Request } from './entity/request.entity';
+import { Time } from './entity/time.entity';
+import { WorkingDays } from './entity/workingdays.entity';
 
 @Module({
     imports: [
-        TypeOrmModule.forFeature([Locksmith, Request]),
+        TypeOrmModule.forFeature([
+            Locksmith, Request,
+            Time,WorkingDays]),
         HttpModule,
     ],
     providers: [FormMemberService],

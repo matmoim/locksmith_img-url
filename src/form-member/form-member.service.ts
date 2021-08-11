@@ -11,9 +11,9 @@ import { UpdateLocksmithDto } from './dto/update-locksmith.dto';
 import { UpdateRequestDto } from './dto/update-request.dto';
 import { validateMIMEType } from "validate-image-type";
 import { Time } from './entity/time.entity';
-import {  UpdateSetTimeDto } from './dto/UpdtSetTimeDto.dto';
-import { SelectWorkingDays } from './dto/select-working.dto';
-import { UpdtSelktWorkDayDto } from './dto/UpdtSelWkD.dto';
+import {  UpdateSetTimeDto } from './dto/updateTimeSet.dto';
+import { SelectWorkingDays } from './dto/createworkingdays.dto';
+import { UpdtSelktWorkDayDto } from './dto/updateWdays.dto';
 
 
 const ALLOWED_TYPES = [
@@ -63,6 +63,8 @@ export class FormMemberService {
             .execute();
     }
 
+
+    // wtf wtf wtf wtf
     public async thedays(updateSelectWorkinDto: UpdtSelktWorkDayDto): Promise<void> {
         await getConnection()
             .createQueryBuilder()
@@ -70,7 +72,7 @@ export class FormMemberService {
     }
 
     
-
+    // wtf wtf wtf wtf
     public async choiseTime(updateSelectWorkinDto: UpdateSetTimeDto): Promise<void> {
         await getConnection()
             .createQueryBuilder()
