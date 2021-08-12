@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn,  OneToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import { WorkingDays } from "./workingdays.entity";
 
 @Entity()
@@ -12,8 +12,8 @@ export class Time {
   @Column("time")
   to!: Date
 
-  @OneToOne(() => WorkingDays, workingdays => workingdays.time)
-  @JoinColumn()
-  workingdays!: WorkingDays;
+  @OneToMany(() => WorkingDays, workingdays => workingdays.times)
+  workingdays!: WorkingDays[];
 }
+
 

@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToOne,PrimaryColumn } from "typeorm";
 import { Time } from "./time.entity";
 
 @Entity()
@@ -27,6 +27,6 @@ export class WorkingDays {
   @Column({ default: false })
   sunday!: boolean;
 
-  @OneToOne(() => Time, time => time.workingdays)
-  time!: Time;
+  @ManyToOne(() => Time, time => time.workingdays)
+  times!: Time;
 }
