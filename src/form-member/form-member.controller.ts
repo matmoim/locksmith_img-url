@@ -87,3 +87,11 @@ export class FormMemberController {
         return this.formMemberService.removeRequest(params.id)
     }
 }
+
+
+// @Post ()
+// async create(@Body() selectWorkingDays :  SelectWorkingDays){
+// return 'This action adds a new day';
+// }    
+//
+// 

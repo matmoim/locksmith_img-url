@@ -5,6 +5,7 @@ import { Locksmith } from './form-member/entity/locksmith.entity';
 import { Request } from './form-member/entity/request.entity';
 import { Time } from './form-member/entity/time.entity';
 import { WorkingDays } from './form-member/entity/workingdays.entity';
+import { FormMemberController } from './form-member/form-member.controller';
 
 @Module({
   imports: [
@@ -25,6 +26,6 @@ import { WorkingDays } from './form-member/entity/workingdays.entity';
     }),
     FormMemberModule,
   ],
-  controllers: [],
+  controllers: [], //FormMemberController
 })
 export class AppModule {}
