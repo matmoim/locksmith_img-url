@@ -6,6 +6,9 @@ export class WorkingDays {
   @PrimaryGeneratedColumn()
   id!: number;
 
+  // @Column({ nullable: true})
+  // time_id!: string;
+
   @OneToOne(() => Time)
   @JoinColumn()
   monday!: Time;
