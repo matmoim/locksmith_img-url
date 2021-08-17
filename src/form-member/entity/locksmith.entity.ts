@@ -11,7 +11,7 @@ export class Locksmith {
 
     @OneToOne(() => WorkingDays)
     @JoinColumn()
-    workingDays?: WorkingDays; 
+    working_days?: WorkingDays; 
 
     @Column()
     adress!: string;

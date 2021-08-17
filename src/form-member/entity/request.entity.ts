@@ -8,7 +8,7 @@ export class Request {
 
   @OneToOne(() => WorkingDays)
   @JoinColumn()
-  workingDays?: WorkingDays; 
+  working_days?: WorkingDays; 
 
   @Column()
   business_name!: string;

@@ -30,11 +30,11 @@ export class FormMemberService {
 
 
 
-    public async getAll(): Promise<Locksmith[]> {
+    public async getAllLockSmithes(): Promise<Locksmith[]> {
         return this.locksmithRepository.find()
     }
 
-    public async create(createLocksmithDto: CreateLocksmithDto): Promise<Locksmith> {
+    public async createLockSmith(createLocksmithDto: CreateLocksmithDto): Promise<Locksmith> {
         let photo;
         if (createLocksmithDto.prevNameFolder) {
             const getRequest = await this.requestRepository.findOne({ id: createLocksmithDto.prevNameFolder })
@@ -51,7 +51,7 @@ export class FormMemberService {
             });
     }
 
-    public async update(updateLocksmithDto: UpdateLocksmithDto): Promise<void> {
+    public async updateLockSmith(updateLocksmithDto: UpdateLocksmithDto): Promise<void> {
         await getConnection()
             .createQueryBuilder()
             .update(Locksmith)
@@ -62,15 +62,21 @@ export class FormMemberService {
 
 
 
-    public async createRequest(createRequestDto: CreateRequestDto): Promise<Request> {
-        return this.requestRepository.save(createRequestDto);
+    public async createRequest(createRequestDto: CreateRequestDto) {
+        const saved = await this.requestRepository.save(createRequestDto);
+
+        console.log(saved);
+
+        const result = await this.requestRepository.findOne(saved.id, { relations: ['working_days'] })
+
+        return result;
     }
 
-    public async getAllRequest(): Promise<Request[]> {
+    public async getAllRequests(): Promise<Request[]> {
         return this.requestRepository.find();
     }
 
-    public async remove(id: string) {
+    public async removeLockSmith(id: string) {
         return await getConnection()
             .createQueryBuilder()
             .delete()
@@ -113,7 +119,7 @@ export class FormMemberService {
 
     }
 
-    public async search(key_word: string): Promise<Locksmith[]> {
+    public async searchLockSmith(key_word: string): Promise<Locksmith[]> {
         return this.locksmithRepository.createQueryBuilder()
             .where(`zips @> ARRAY[:key_word]::varchar[] OR SIMILARITY(adress, :key_word) > 0.1`, { key_word })
             // .orWhere('SIMILARITY(adress, :key_word) > 0.1', { key_word })
@@ -181,12 +187,12 @@ export class FormMemberService {
         });
     }
 
-    private async updateRequest(updateRequestDto: UpdateRequestDto): Promise<void> {
+    async updateRequest(id: number, updateRequestDto: UpdateRequestDto): Promise<void> {
         await getConnection()
             .createQueryBuilder()
             .update(Request)
             .set({ ...updateRequestDto })
-            .where("id = :id", { id: updateRequestDto.id })
+            .where("id = :id", { id })
             .execute();
     }
 
@@ -195,7 +201,7 @@ export class FormMemberService {
 
         if (locksmith_data) {
             locksmith_data.photo = fileName;
-            await this.update(locksmith_data);
+            await this.updateLockSmith(locksmith_data);
         }
     }
 
@@ -206,7 +212,7 @@ export class FormMemberService {
             if (fileType === 'photo') {
                 request_data.photo = fileName;
             }
-            await this.updateRequest(request_data);
+            await this.updateRequest(+request_id, request_data);
         }
     }
 

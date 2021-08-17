@@ -1,15 +1,23 @@
-import { Body, Controller, Post } from "@nestjs/common";
-import { CreateTimeSetDto } from "../dto/createtimeset.ts.dto";
-import { WorkDayService } from "../services/working-days.service";
+import { BadRequestException, Body, Controller, Param, Post } from "@nestjs/common";
+import { CreateWorkingDaysDto } from "../dto/create-working-days.dto";
+import { WorkingDayService } from "../services/working-days.service";
 
 @Controller('week-days')
 export class WorkDayController {
   constructor(
-    private readonly workDayService: WorkDayService) { }
+    private readonly workDayService: WorkingDayService) { }
 
-  @Post('post')
-  postTimeToDay(@Body() times: CreateTimeSetDto) {
-    // return this.workDayService.insert(times);
+  @Post('/:requestId')
+  async postTimeToDay(
+    @Body() workingDays: CreateWorkingDaysDto,
+    @Param('requestId') requestId: string,
+  ) {
+    if (!Object.keys(workingDays).length) {
+      throw new BadRequestException('You should provide at least one week-day');
+    }
+    const workingDaysId = await this.workDayService.create(workingDays);
+
+    return { workingDaysId };
   }
 
 }

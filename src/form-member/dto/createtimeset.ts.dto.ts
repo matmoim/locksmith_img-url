@@ -1,6 +1,9 @@
+import { IsString } from "class-validator";
 
 
 export class CreateTimeSetDto {
- from!:Date;
-  to!:Date;
+  @IsString()
+  from!: Date;
+  @IsString()
+  to!: Date;
 }

@@ -1,9 +1,9 @@
-import { Column, Entity, JoinColumn, ManyToOne,OneToOne,PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne,OneToOne,PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Time } from "./time.entity";
 
 @Entity()
 export class WorkingDays {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id!: number;
 
   @OneToOne(() => Time)

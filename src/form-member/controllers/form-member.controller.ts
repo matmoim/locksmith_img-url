@@ -18,19 +18,19 @@ export class FormMemberController {
 
     @Get('get-all')
     public async getAll(): Promise<Locksmith[]> {
-        return this.formMemberService.getAll();
+        return this.formMemberService.getAllLockSmithes();
     }
 
     @Get('get-all-request')
     public async getAllRequest(): Promise<Request[]> {
-        return this.formMemberService.getAllRequest();
+        return this.formMemberService.getAllRequests();
     }
 
     @Get('search/:key_word')
     public async search(
         @Param('key_word') key_word: string
     ): Promise<Locksmith[]> {
-        return this.formMemberService.search(key_word);
+        return this.formMemberService.searchLockSmith(key_word);
     }
 
     @Post('add-photo/by-url')
@@ -58,13 +58,13 @@ export class FormMemberController {
     public async createLocksmith(
         @Body() createLocksmithDto: CreateLocksmithDto,
     ): Promise<Locksmith> {
-        return this.formMemberService.create(createLocksmithDto);
+        return this.formMemberService.createLockSmith(createLocksmithDto);
     }
 
     @Post('create-request')
     public async createRequest(
         @Body() createLocksmithDto: CreateRequestDto
-    ): Promise<Request> {
+    ) {
         return this.formMemberService.createRequest(createLocksmithDto);
     }
 
@@ -72,14 +72,14 @@ export class FormMemberController {
     public async updateLocksmith(
         @Body() updateLocksmithDto: UpdateLocksmithDto
     ): Promise<void> {
-        return this.formMemberService.update(updateLocksmithDto);
+        return this.formMemberService.updateLockSmith(updateLocksmithDto);
     }
 
     @Delete('remove/:id')
     public async remove(
         @Param() params: { id: string }
     ) {
-        return this.formMemberService.remove(params.id)
+        return this.formMemberService.removeLockSmith(params.id)
     }
 
     @Delete('remove-request/:id')

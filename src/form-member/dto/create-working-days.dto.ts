@@ -1,12 +1,41 @@
+import { Type } from "class-transformer";
+import { IsOptional, ValidateNested } from "class-validator";
+import { CreateTimeSetDto } from "./createtimeset.ts.dto";
 
 
-// TODO
 export class CreateWorkingDaysDto {
-  monday!: boolean;
-  tuesday!: boolean;
-  wednesday!: boolean;
-  thursday!: boolean;
-  friday!: boolean;
-  saturday!: boolean;
-  sunday!: boolean;
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => CreateTimeSetDto)
+  monday?: CreateTimeSetDto;
+
+  @IsOptional()
+  @ValidateNested() 
+  @Type(() => CreateTimeSetDto)
+  tuesday?: CreateTimeSetDto;
+
+  @IsOptional()
+  @ValidateNested() 
+  @Type(() => CreateTimeSetDto)
+  wednesday?: CreateTimeSetDto;
+
+  @IsOptional()
+  @ValidateNested() 
+  @Type(() => CreateTimeSetDto)
+  thursday?: CreateTimeSetDto;
+
+  @IsOptional()
+  @ValidateNested() 
+  @Type(() => CreateTimeSetDto)
+  friday?: CreateTimeSetDto;
+
+  @IsOptional()
+  @ValidateNested() 
+  @Type(() => CreateTimeSetDto)
+  saturday?: CreateTimeSetDto;
+
+  @IsOptional()
+  @ValidateNested() 
+  @Type(() => CreateTimeSetDto)
+  sunday?: CreateTimeSetDto;
 }
