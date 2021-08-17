@@ -1,9 +1,14 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { WorkingDays } from './workings-day.entity';
 
 @Entity('request')
 export class Request {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
+
+  @OneToOne(() => WorkingDays)
+  @JoinColumn()
+  workingDays?: WorkingDays; 
 
   @Column()
   business_name!: string;
