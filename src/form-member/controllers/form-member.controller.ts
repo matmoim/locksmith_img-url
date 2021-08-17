@@ -6,7 +6,7 @@ import { UpdateLocksmithDto } from '../dto/update-locksmith.dto';
 import UploaPhotoByUrlDto from '../dto/upload-photo-by-url';
 import { Locksmith } from '../entity/locksmith.entity';
 import { Request } from '../entity/request.entity';
-import { FormMemberService } from '../form-member.service';
+import { FormMemberService } from '../services/form-member.service';
 
 @Controller('form-member')
 export class FormMemberController {

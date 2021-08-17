@@ -6,7 +6,8 @@ import { Request } from './entity/request.entity';
 import { Time } from './entity/time.entity';
 import { WorkingDays } from './entity/workingdays.entity';
 import { FormMemberController } from './controllers/form-member.controller';
-import { FormMemberService, WorkDayService } from './form-member.service';
+import { FormMemberService } from './services/form-member.service';
+import { WorkDayService } from './services/working-days.service';
 
 @Module({
     imports: [

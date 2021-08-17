@@ -1,41 +1,21 @@
 import { BadRequestException, HttpException, HttpService, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { getConnection, Repository } from 'typeorm';
-import { CreateLocksmithDto } from './dto/create-locksmith.dto';
-import { Locksmith } from './entity/locksmith.entity';
 import * as fse from 'fs-extra';
 import * as path from 'path';
-import { CreateRequestDto } from './dto/create-request.dto';
-import { Request } from './entity/request.entity';
-import { UpdateLocksmithDto } from './dto/update-locksmith.dto';
-import { UpdateRequestDto } from './dto/update-request.dto';
+import { getConnection, Repository } from 'typeorm';
 import { validateMIMEType } from "validate-image-type";
-import { Time } from './entity/time.entity';
-import { WorkingDays } from './entity/workingdays.entity';
-
-
+import { CreateLocksmithDto } from '../dto/create-locksmith.dto';
+import { CreateRequestDto } from '../dto/create-request.dto';
+import { UpdateLocksmithDto } from '../dto/update-locksmith.dto';
+import { UpdateRequestDto } from '../dto/update-request.dto';
+import { Locksmith } from '../entity/locksmith.entity';
+import { Request } from '../entity/request.entity';
 
 const ALLOWED_TYPES = [
     'image/jpeg',
     'image/png'
 ];
 
-
-
-@Injectable()
-export class WorkDayService {
-    constructor(
-        @InjectRepository(Time)
-        private readonly timeRepository: Repository<Time>,
-
-        @InjectRepository(WorkingDays)
-        private readonly workingDaysRepository: Repository<WorkingDays>,
-    ) { }
-
-   //public async create(timeRepository )
-
-
-}
 @Injectable()
 export class FormMemberService {
     constructor(

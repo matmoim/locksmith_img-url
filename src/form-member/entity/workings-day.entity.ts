@@ -11,20 +11,26 @@ export class WorkingDays {
   monday!: Time;
   
   @OneToOne(() => Time)
+  @JoinColumn()
   tuesday!: Time;
   
   @OneToOne(() => Time)
+  @JoinColumn()
   wednesday!: Time;
   
   @OneToOne(() => Time)
+  @JoinColumn()
   thursday!: Time;
   
   @OneToOne(() => Time)
+  @JoinColumn()
   friday!: Time;
   
   @OneToOne(() => Time)
+  @JoinColumn()
   saturday!: Time;
   
   @OneToOne(() => Time)
+  @JoinColumn()
   sunday!: Time;
 }

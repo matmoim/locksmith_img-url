@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { WorkingDays } from "./workings-day.entity";
 
 @Entity('locksmith')
 export class Locksmith {
@@ -7,6 +8,10 @@ export class Locksmith {
 
     @Column()
     name!: string;
+
+    @OneToOne(() => WorkingDays)
+    @JoinColumn()
+    workingDays?: WorkingDays; 
 
     @Column()
     adress!: string;

@@ -1,5 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
-import { WorkingDays } from "./workingdays.entity";
+import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Time {
