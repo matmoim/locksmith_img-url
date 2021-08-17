@@ -12,6 +12,9 @@ export class Time {
   @Column("time")
   to!: Date
 
+  @Column("time")
+  day!: Date
+
   @OneToMany(() => WorkingDays, workingdays => workingdays.times)
   workingdays!: WorkingDays[];
 }

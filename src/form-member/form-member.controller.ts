@@ -1,18 +1,35 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Query, UploadedFile, UseInterceptors } from '@nestjs/common';
-import {  FileInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { CreateLocksmithDto } from './dto/create-locksmith.dto';
 import { CreateRequestDto } from './dto/create-request.dto';
+import { SetTime } from './dto/createtimeset.ts.dto';
 import { UpdateLocksmithDto } from './dto/update-locksmith.dto';
 import UploaPhotoByUrlDto from './dto/upload-photo-by-url';
 import { Locksmith } from './entity/locksmith.entity';
 import { Request } from './entity/request.entity';
-import { FormMemberService } from './form-member.service';
+import { FormMemberService, WorkDayService } from './form-member.service';
+
+
+@Controller('week-days')
+export class WorkDayController {
+    constructor(
+        private readonly workDayService: WorkDayService) { }
+
+    @Post('post')
+    postTimeToDay(@Body()times:SetTime) {
+        return this.workDayService.insert(times);
+    }
+
+}
+
 
 @Controller('form-member')
 export class FormMemberController {
     constructor(
         private readonly formMemberService: FormMemberService
+
     ) { }
+
 
     @Get('get-all')
     public async getAll(): Promise<Locksmith[]> {
@@ -36,7 +53,7 @@ export class FormMemberController {
         @Query() dataForPhoto: UploaPhotoByUrlDto,
     ) {
         const { locksmith_id, photoUrl } = dataForPhoto;
-        
+
         return this.formMemberService.uploadPhotoByUrl(photoUrl, locksmith_id);
     }
 

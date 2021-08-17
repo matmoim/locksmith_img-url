@@ -26,6 +26,5 @@ import { FormMemberController } from './form-member/form-member.controller';
     }),
     FormMemberModule,
   ],
-  controllers: [], //FormMemberController
 })
 export class AppModule {}

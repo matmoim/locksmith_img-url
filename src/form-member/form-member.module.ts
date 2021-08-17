@@ -1,8 +1,8 @@
 import { HttpModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Locksmith } from './entity/locksmith.entity';
-import { FormMemberController } from './form-member.controller';
-import { FormMemberService } from './form-member.service';
+import { FormMemberController, WorkDayController } from './form-member.controller';
+import { FormMemberService, WorkDayService } from './form-member.service';
 import { Request } from './entity/request.entity';
 import { Time } from './entity/time.entity';
 import { WorkingDays } from './entity/workingdays.entity';
@@ -14,8 +14,8 @@ import { WorkingDays } from './entity/workingdays.entity';
             Time,WorkingDays]),
         HttpModule,
     ],
-    providers: [FormMemberService],
-    controllers: [FormMemberController]
+    providers: [FormMemberService,WorkDayService ],
+    controllers: [FormMemberController,WorkDayController]
 })
 export class FormMemberModule {
 

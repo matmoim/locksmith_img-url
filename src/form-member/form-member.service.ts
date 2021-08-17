@@ -10,6 +10,8 @@ import { Request } from './entity/request.entity';
 import { UpdateLocksmithDto } from './dto/update-locksmith.dto';
 import { UpdateRequestDto } from './dto/update-request.dto';
 import { validateMIMEType } from "validate-image-type";
+import { Time } from './entity/time.entity';
+import { WorkingDays } from './entity/workingdays.entity';
 
 
 
@@ -19,9 +21,25 @@ const ALLOWED_TYPES = [
 ];
 
 
+
+@Injectable()
+export class WorkDayService {
+    constructor(
+        @InjectRepository(Time)
+        private readonly timeRepository: Repository<Time>,
+
+        @InjectRepository(WorkingDays)
+        private readonly workingDaysRepository: Repository<WorkingDays>,
+    ) { }
+
+   //public async create(timeRepository )
+
+
+}
 @Injectable()
 export class FormMemberService {
     constructor(
+
         @InjectRepository(Locksmith)
         private readonly locksmithRepository: Repository<Locksmith>,
 
@@ -29,6 +47,8 @@ export class FormMemberService {
         private readonly requestRepository: Repository<Request>,
         private readonly httpService: HttpService,
     ) { }
+
+
 
     public async getAll(): Promise<Locksmith[]> {
         return this.locksmithRepository.find()
