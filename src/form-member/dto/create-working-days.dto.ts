@@ -1,6 +1,7 @@
 
 
-export class SelectWorkingDays {
+// TODO
+export class CreateWorkingDaysDto {
   monday!: boolean;
   tuesday!: boolean;
   wednesday!: boolean;

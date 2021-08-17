@@ -6,17 +6,11 @@ export class Time {
   @PrimaryColumn()
   id!: number;
 
-  @Column("time")
+  @Column({ type: 'time'})
   from!: Date
 
-  @Column("time")
+  @Column({ type: 'time' })
   to!: Date
-
-  @Column("time")
-  day!: Date
-
-  @OneToMany(() => WorkingDays, workingdays => workingdays.times)
-  workingdays!: WorkingDays[];
 }
 
 

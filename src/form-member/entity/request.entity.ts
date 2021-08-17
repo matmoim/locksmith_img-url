@@ -23,12 +23,6 @@ export class Request {
   @Column()
   link_to_map!: string;
 
-  @Column()
-  open_at!: Date;
-
-  @Column()
-  close_at!: Date;
-
   @Column('character varying', { default: '{}', array: true })
   services!: string[];
 
@@ -43,29 +37,4 @@ export class Request {
 
   @Column({ nullable: true })
   files!: string;
-
-  // Work days
-
-  // @Column({ default: false })
-  // monday!: boolean;
-
-  // @Column({ default: false })
-  // tuesday!: boolean;
-
-  // @Column({ default: false })
-  // wednesday!: boolean;
-
-  // @Column({ default: false })
-  // thursday!: boolean;
-
-  // @Column({ default: false })
-  // friday!: boolean;
-
-  // @Column({ default: false })
-  // saturday!: boolean;
-
-  // @Column({ default: false })
-  // sunday!: boolean;
-
-  // Work days
 }

@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne,PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne,OneToOne,PrimaryColumn } from "typeorm";
 import { Time } from "./time.entity";
 
 @Entity()
@@ -6,27 +6,25 @@ export class WorkingDays {
   @PrimaryColumn()
   id!: number;
 
-  @Column({ default: false })
-  monday!: boolean;
-
-  @Column({ default: false })
-  tuesday!: boolean;
-
-  @Column({ default: false })
-  wednesday!: boolean;
-
-  @Column({ default: false })
-  thursday!: boolean;
-
-  @Column({ default: false })
-  friday!: boolean;
-
-  @Column({ default: false })
-  saturday!: boolean;
-
-  @Column({ default: false })
-  sunday!: boolean;
-
-  @ManyToOne(() => Time, time => time.workingdays)
-  times!: Time;
+  @OneToOne(() => Time)
+  @JoinColumn()
+  monday!: Time;
+  
+  @OneToOne(() => Time)
+  tuesday!: Time;
+  
+  @OneToOne(() => Time)
+  wednesday!: Time;
+  
+  @OneToOne(() => Time)
+  thursday!: Time;
+  
+  @OneToOne(() => Time)
+  friday!: Time;
+  
+  @OneToOne(() => Time)
+  saturday!: Time;
+  
+  @OneToOne(() => Time)
+  sunday!: Time;
 }
