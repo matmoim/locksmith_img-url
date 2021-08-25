@@ -1,0 +1,35 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type LocksmithObjectType {
+  id: String!
+  name: String!
+  adress: String!
+  phone: String!
+  mail: String!
+  link_to_site: String!
+  link_to_map: String!
+  services: [String!]!
+  prevNameFolder: String
+}
+
+type Query {
+  allLockSmithes: [LocksmithObjectType!]!
+  searchLockSmithes(key_word: String!): [LocksmithObjectType!]!
+}
+
+type Mutation {
+  createLockSmith(createLocksmithData: LocksmithInput!): LocksmithObjectType!
+}
+
+input LocksmithInput {
+  name: String!
+  adress: String!
+  phone: String!
+  mail: String!
+  link_to_site: String!
+  link_to_map: String!
+  services: [String!]!
+  prevNameFolder: String
+}

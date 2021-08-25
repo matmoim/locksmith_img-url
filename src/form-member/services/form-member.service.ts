@@ -119,6 +119,7 @@ export class FormMemberService {
 
     }
 
+    // TODO not work
     public async searchLockSmith(key_word: string): Promise<Locksmith[]> {
         return this.locksmithRepository.createQueryBuilder()
             .where(`zips @> ARRAY[:key_word]::varchar[] OR SIMILARITY(adress, :key_word) > 0.1`, { key_word })
