@@ -6,8 +6,8 @@ export class TimeSetObjecType {
   @Field()
   id!: string;
   @Field()
-  from!: Date;
+  from!: string;
 
   @Field()
-  to!: Date;
+  to!: string;
 }

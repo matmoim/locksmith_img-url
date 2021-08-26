@@ -3,8 +3,8 @@ import { Field, InputType } from "@nestjs/graphql";
 @InputType()
 export class TimeSetInput {
   @Field()
-  from!: Date;
+  from!: string;
 
   @Field()
-  to!: Date;
+  to!: string;
 }

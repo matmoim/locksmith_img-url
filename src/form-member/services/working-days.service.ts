@@ -17,6 +17,7 @@ export class WorkingDayService {
     ) { }
 
     async create(data: CreateWorkingDaysDto) {
+        console.log(data)
         const times = await Promise.all(
             Object.values(data).map((value: { from: string, to: string }) => {
                 return this.timeRepository.insert(value);

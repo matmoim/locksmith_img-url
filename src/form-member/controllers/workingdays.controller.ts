@@ -15,6 +15,7 @@ export class WorkDayController {
     if (!Object.keys(workingDays).length) {
       throw new BadRequestException('You should provide at least one week-day');
     }
+    console.log(workingDays)
     const workingDaysId = await this.workDayService.create(workingDays);
 
     return { workingDaysId };

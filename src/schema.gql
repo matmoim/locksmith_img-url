@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type LocksmithObjectType {
-  id: String!
+  id: String
   name: String!
   adress: String!
   phone: String!
@@ -14,28 +14,6 @@ type LocksmithObjectType {
   prevNameFolder: String
 }
 
-type TimeSetObjecType {
-  id: String!
-  from: DateTime!
-  to: DateTime!
-}
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
-
-type WorkingDaysDtoObjecType {
-  id: String!
-  monday: TimeSetObjecType!
-  tuesday: TimeSetObjecType!
-  wednesday: TimeSetObjecType!
-  thursday: TimeSetObjecType!
-  friday: TimeSetObjecType!
-  saturday: TimeSetObjecType!
-  sunday: TimeSetObjecType!
-}
-
 type Query {
   allLockSmithes: [LocksmithObjectType!]!
   searchLockSmithes(key_word: String!): [LocksmithObjectType!]!
@@ -44,7 +22,7 @@ type Query {
 
 type Mutation {
   createLockSmith(createLocksmithData: LocksmithInput!): LocksmithObjectType!
-  createWorkDayTimes(setTimToDay: WorkingDaysDtoInput!): WorkingDaysDtoObjecType!
+  createWorkDayTimes(setTimToDay: WorkingDaysDtoInput!): Float!
 }
 
 input LocksmithInput {
@@ -69,6 +47,6 @@ input WorkingDaysDtoInput {
 }
 
 input TimeSetInput {
-  from: DateTime!
-  to: DateTime!
+  from: String!
+  to: String!
 }

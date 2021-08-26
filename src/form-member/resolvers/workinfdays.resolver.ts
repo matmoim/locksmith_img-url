@@ -16,14 +16,20 @@ export class WeekDayTimeResolver {
   }
 
 
-  @Mutation(() => WorkingDaysDtoObjecType)
+  @Mutation(()  => Number )
   async createWorkDayTimes(@Args('setTimToDay') workingDaysDtoInput: WorkingDaysDtoInput) {
     if (!Object.keys(workingDaysDtoInput).length) {
       throw new BadRequestException('You should provide at least one week-day');
     }
-    const workingDaysId = await this.workingDayService.create(workingDaysDtoInput);
 
-    return { workingDaysId };
+    console.log(workingDaysDtoInput)
+    const workingDaysId = await this.workingDayService.create(workingDaysDtoInput as any);
+    console.log(workingDaysId);
+    return  workingDaysId ;
+
+
   }
 
+
 }
+

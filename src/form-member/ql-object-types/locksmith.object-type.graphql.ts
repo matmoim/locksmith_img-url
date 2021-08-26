@@ -2,7 +2,7 @@ import { Field, ObjectType } from "@nestjs/graphql";
 
 @ObjectType()
 export class LocksmithObjectType {
-  @Field()
+  @Field({ nullable: true })
   id!: string;
 
   @Field()
