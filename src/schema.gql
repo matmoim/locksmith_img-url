@@ -14,13 +14,37 @@ type LocksmithObjectType {
   prevNameFolder: String
 }
 
+type TimeSetObjecType {
+  id: String!
+  from: DateTime!
+  to: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type WorkingDaysDtoObjecType {
+  id: String!
+  monday: TimeSetObjecType!
+  tuesday: TimeSetObjecType!
+  wednesday: TimeSetObjecType!
+  thursday: TimeSetObjecType!
+  friday: TimeSetObjecType!
+  saturday: TimeSetObjecType!
+  sunday: TimeSetObjecType!
+}
+
 type Query {
   allLockSmithes: [LocksmithObjectType!]!
   searchLockSmithes(key_word: String!): [LocksmithObjectType!]!
+  allWeekDayTime: String!
 }
 
 type Mutation {
   createLockSmith(createLocksmithData: LocksmithInput!): LocksmithObjectType!
+  createWorkDayTimes(setTimToDay: WorkingDaysDtoInput!): WorkingDaysDtoObjecType!
 }
 
 input LocksmithInput {
@@ -32,4 +56,19 @@ input LocksmithInput {
   link_to_map: String!
   services: [String!]!
   prevNameFolder: String
+}
+
+input WorkingDaysDtoInput {
+  monday: TimeSetInput!
+  tuesday: TimeSetInput!
+  wednesday: TimeSetInput!
+  thursday: TimeSetInput!
+  friday: TimeSetInput!
+  saturday: TimeSetInput!
+  sunday: TimeSetInput!
+}
+
+input TimeSetInput {
+  from: DateTime!
+  to: DateTime!
 }

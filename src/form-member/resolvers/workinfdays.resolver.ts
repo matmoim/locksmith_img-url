@@ -1,23 +1,29 @@
+import { BadRequestException } from "@nestjs/common";
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { WorkingDaysDtoInput } from "../ql-inputs/workingdays.input.graphql";
 import { WorkingDaysDtoObjecType } from "../ql-object-types/workingdays.obj-typ.praphql";
 import { WorkingDayService } from "../services/working-days.service";
 
 @Resolver()
-export class WeekDayTime {
+export class WeekDayTimeResolver {
   constructor(
-    private workingDayService: WorkingDayService
+    private workingDayService: WorkingDayService,
   ) { }
 
-  @Query(() => [WorkingDaysDtoObjecType])
+  @Query(() => String)
   allWeekDayTime() {
-    return this.workingDayService.create;
+    return 'Hello World'
   }
 
 
   @Mutation(() => WorkingDaysDtoObjecType)
-  createWorkDayTimes(@Args('setTimToDay') workingDaysDtoInput: WorkingDaysDtoInput) {
-    return this.workingDayService.create(workingDaysDtoInput);
+  async createWorkDayTimes(@Args('setTimToDay') workingDaysDtoInput: WorkingDaysDtoInput) {
+    if (!Object.keys(workingDaysDtoInput).length) {
+      throw new BadRequestException('You should provide at least one week-day');
+    }
+    const workingDaysId = await this.workingDayService.create(workingDaysDtoInput);
+
+    return { workingDaysId };
   }
 
 }

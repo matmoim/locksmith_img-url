@@ -9,6 +9,7 @@ import { FormMemberService } from './services/form-member.service';
 import { WorkingDayService } from './services/working-days.service';
 import { WorkingDays } from './entity/workings-day.entity';
 import { FormMemeberResolver } from './resolvers/form-member.resolver';
+import { WeekDayTimeResolver } from './resolvers/workinfdays.resolver';
 
 @Module({
     imports: [
@@ -17,7 +18,7 @@ import { FormMemeberResolver } from './resolvers/form-member.resolver';
             Time, WorkingDays]),
         HttpModule,
     ],
-    providers: [FormMemberService, WorkingDayService, FormMemeberResolver],
+    providers: [FormMemberService, WorkingDayService, FormMemeberResolver,WeekDayTimeResolver],
     controllers: [FormMemberController, WorkDayController]
 })
 export class FormMemberModule {

@@ -1,46 +1,31 @@
-import { Field, InputType } from "@nestjs/graphql";
-import { IsOptional, ValidateNested } from "class-validator";
-import { TimeSetInput } from "../ql-inputs/createtime.input.dto";
+import { Field, ObjectType } from "@nestjs/graphql";
+import { TimeSetObjecType } from "./timeset.object-type";
 
-@InputType()
+@ObjectType()
 export class WorkingDaysDtoObjecType {
 
-  @Field(() => TimeSetInput)
+  @Field()
   id!: string;
 
-  @Field(() => TimeSetInput)
-  @IsOptional()
-  @ValidateNested()
-  monday?: TimeSetInput;
+  @Field(() => TimeSetObjecType)
+  monday?: TimeSetObjecType;
 
-  @Field(() => TimeSetInput)
-  @IsOptional()
-  @ValidateNested()
-  tuesday?: TimeSetInput;
+  @Field(() => TimeSetObjecType)
+  tuesday?: TimeSetObjecType;
 
-  @Field(() => TimeSetInput)
-  @IsOptional()
-  @ValidateNested()
-  wednesday?: TimeSetInput;
+  @Field(() => TimeSetObjecType)
+  wednesday?: TimeSetObjecType;
 
-  @Field(() => TimeSetInput)
-  @IsOptional()
-  @ValidateNested()
-  thursday?: TimeSetInput;
+  @Field(() => TimeSetObjecType)
+  thursday?: TimeSetObjecType;
 
-  @Field(() => TimeSetInput)
-  @IsOptional()
-  @ValidateNested()
-  friday?: TimeSetInput;
+  @Field(() => TimeSetObjecType)
+  friday?: TimeSetObjecType;
 
-  @Field(() => TimeSetInput)
-  @IsOptional()
-  @ValidateNested()
-  saturday?: TimeSetInput;
+  @Field(() => TimeSetObjecType)
+  saturday?: TimeSetObjecType;
 
 
-  @Field(() => TimeSetInput)
-  @IsOptional()
-  @ValidateNested()
-  sunday?: TimeSetInput;
+  @Field(() => TimeSetObjecType)
+  sunday?: TimeSetObjecType;
 }
